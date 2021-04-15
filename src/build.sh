@@ -1,5 +1,50 @@
 #!/bin/bash
 
+# Build htm from md (courtesty of @tehn)
+
+### convert root md
+
+echo ">> root .md to .html"
+
+list=$(ls -r ./*.md)
+for file in $list ; do
+  file=${file:2}
+  file=${file%.*}
+  echo "$file"
+  # convert md to html
+  target=${file}.htm
+  cat start.htm_ > ${target}
+  cmark --unsafe ${file}.md >> ${target}
+  cat end.htm_ >> ${target}
+done
+
+### build index, gen rss, md-html
+
+echo ">> build log, rss"
+
+list=$(ls -r ./*/*.md)
+
+# log="log"
+
+# cat start.htm_ > ${log}.html
+# cat start_rss.xml_ > rss.xml
+
+n=1
+
+for file in $list ; do
+  file=${file:2}
+  subfile=${file%.*}
+  folder=${subfile%\/*}
+  name=${subfile#*\/}
+  echo "$folder / $name"
+
+  # convert md to html
+  target=${file%.*}.htm
+  cat start.htm_ > ${target}
+  cmark --unsafe ${file} >> ${target}
+  cat end.htm_ >> ${target}
+done 
+
 # Lint
 clang-format -i main.c
 

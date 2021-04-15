@@ -13,12 +13,15 @@ copyright notice and this permission notice appear in all copies.
 
 THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
 WITH REGARD TO THIS SOFTWARE.
+
+Modified by @fardles for Shelford Hill
+
 */
 
-#define NAME "100R"
-#define DOMAIN "https://100r.co/"
-#define LICENSE "https://github.com/hundredrabbits/100r.co/blob/master/LICENSE.by-nc-sa-4.0.md"
-#define SOURCE "https://github.com/hundredrabbits/100r.co/edit/master"
+#define NAME "Shelford Hill"
+#define DOMAIN "https://shelfordhill.com/"
+#define LICENSE "https://github.com/fardles/shelfordhill.com/blob/master/LICENSE.by-nc-sa-4.0.md"
+#define SOURCE "https://github.com/fardles/shelfordhill.com/edit/master"
 
 struct dirent *dir;
 
@@ -153,7 +156,7 @@ build(FILE *f, Lexicon *l, char *name, char *srcpath)
 	fprintf(f,
 		"<meta charset='utf-8'>"
 		"<meta name='description' content='%s'/>"
-		"<meta name='thumbnail' content='" DOMAIN "media/services/thumbnail.jpg' />"
+		"<meta name='thumbnail' content='..media/thumbnail.png' />"
 		"<meta name='viewport' content='width=device-width,initial-scale=1'>"
 		"<link rel='alternate' type='application/rss+xml' title='RSS Feed' "
 		"href='../links/rss.xml' />"
@@ -167,7 +170,7 @@ build(FILE *f, Lexicon *l, char *name, char *srcpath)
 	fputs("<body>", f);
 	/* header */
 	fputs("<header>", f);
-	fputs("<a href='home.html'><img src='../media/interface/logo.svg' alt='" NAME "' height='50'></a>", f);
+	fputs("<a href='home.html'><img src='../media/thumbnail.png' alt='" NAME "' height='191'></a>", f);
 	fputs("</header>", f);
 	/* nav */
 	fputs("<nav>", f);
@@ -184,8 +187,9 @@ build(FILE *f, Lexicon *l, char *name, char *srcpath)
 	/* footer */
 	fputs("<footer><hr />", f);
 	fpedited(f, srcpath);
-	fputs("<b>Hundredrabbits</b> © 2021 — ", f);
-	fputs("<a href='" LICENSE "' target='_blank'>BY-NC-SA 4.0</a>", f);
+	fputs("Wiki engine by <b>Hundredrabbits</b> © 2021 — ", f);
+	fputs("<a href='" LICENSE "' target='_blank'>BY-NC-SA 4.0</a> - ", f);
+	fputs("Modified by @fardles",f);
 	fputs("</footer>", f);
 	/* end */
 	fputs("</body></html>", f);
