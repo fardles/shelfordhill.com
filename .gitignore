@@ -1,5 +1,3 @@
-.DS*
-*jpg~
-*png~
-*gif~
-.kra
+# Ignore log folder
+
+src/log/
